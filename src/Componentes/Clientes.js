@@ -19,42 +19,39 @@ export const Clientes = () => {
         )
             .then((response) => {
                 if (!response.ok) {
-                    throw new Error("Error en la respuesta");
+                    throw new Error("Error en la respuesta.");
                 }
             })
             .then(() => {
-               alert("Usuario eliminado. En breve se actualizará la página")
+              setClientes(
+                clientes.filter((cliente) => cliente.idCliente !== idCliente)
+              );
+               alert("Usuario eliminado")
+              
             })
             .catch((error) => console.log(error + "Error en la llamada"));
 
 
-            fetch("https://localhost:7062/api/Clientes")
-            .then((response) => response.json())
-            .then((data) => {
-                setClientes(data);
-            });
-            
+           
     }
 
     useEffect(() => {
-        // Mostrar el loader inicialmente
+      if (location.pathname !== "/") {
+        setShowLoader(false);
+      }
+
+      if (clientes.length === 0) {
         setShowLoader(true);
-    
-        if (location.pathname !== "/" && clientes == []) {
-            setShowLoader(false);
-        } else {
-            fetch("https://localhost:7062/api/Clientes")
-                .then((response) => response.json())
-                .then((data) => {
-                    setClientes(data);
-                    setShowLoader(false);
-                })
-                .catch((error) => {
-                    console.error('Error fetching data:', error);
-                    setShowLoader(false); 
-                });
-        }
-    }, [location.pathname]);
+      }
+
+      fetch("https://localhost:7062/api/Clientes")
+        .then((response) => response.json())
+        .then((data) => {
+          setClientes(data);
+          setShowLoader(false);
+        });
+    }, [location.pathname, clientes]);
+
     return (
       <>
         {showLoader ? (
