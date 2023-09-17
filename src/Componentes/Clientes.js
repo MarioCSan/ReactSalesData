@@ -67,7 +67,8 @@ export const Clientes = () => {
             {errorApi ? (
               <div className='centered-container'>
                 <h1>Hay un problema con la recuperación de los datos.</h1>
-                <h2>No se puede acceder a la API</h2>
+                <h2>No se puede acceder a la API.</h2>
+                <h3>Comprueba que todo este bien conectado</h3>
               </div>
             ) : (
               <div>
