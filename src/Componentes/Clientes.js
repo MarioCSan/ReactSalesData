@@ -5,7 +5,7 @@ import Loader from './Loader';
 export const Clientes = () => {
     const [clientes, setClientes] = useState([]);
     const [showLoader, setShowLoader] = useState(true);
-    const [errorApi, setErrorApi] = useState(false)
+    const [errorApi, setErrorApi] = useState(false);
     const location = useLocation();
 
     function eliminarCliente(idCliente) {
@@ -20,7 +20,7 @@ export const Clientes = () => {
         )
             .then((response) => {
                 if (!response.ok) {
-                    throw new Error("Error en la respuesta.");
+                   setErrorApi(true)
                 }
             })
             .then(() => {
@@ -46,7 +46,11 @@ export const Clientes = () => {
       }
 
       fetch("https://localhost:7062/api/Clientes")
-        .then((response) => response.json())
+        .then((response) => {
+          if (!response.ok) {
+            setErrorApi(true);
+          }
+        })
         .then((data) => {
           setClientes(data);
           setShowLoader(false);
