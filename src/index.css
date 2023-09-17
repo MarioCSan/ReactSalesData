@@ -56,7 +56,12 @@ h1 {
 }
 
 .btn-danger{
-  background-color: firebrick;
+  background-color: #ff0303;
+  color: white;
+}
+
+.btn-danger:hover{
+  background-color: #b22222;
   color: white;
 }
 
@@ -76,12 +81,15 @@ h1 {
 
 .btn-warning{
   background-color: rgb(253, 215, 0);
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 
 }
 
 .btn-warning:hover {
-  border-color: #646cff;
+  border-color: #fff 1px solid #b22222;
+  background-color: rgb(255, 123, 0);
+  color: #000;
+
 }
 .btn-warning:focus,
 .btn-warning:focus-visible {
