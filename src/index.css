@@ -36,6 +36,17 @@ h1 {
   line-height: 1.1;
 }
 
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; 
+  width: 100%;
+  text-align: center; 
+  padding-left: 10%;
+}
+
 .button {
   border-radius: 8px;
   border: 1px solid transparent;
